@@ -1,23 +1,26 @@
 {
-  "store_id": 51405,
-  "name": "Atacado Cristiane",
-  "repository": "ecomplus-stores/atacado-cristiane",
-  "domain": "atacado-cristiane.netlify.app",
-  "short_name": "Atacado Cristiane",
-  "description": "CR nasceu em 2007, a partir de um sonho de Cristiane Resende em criar roupas capaz de libertar o espírito sonhador de cada mulher. Sempre atuando no ramo da moda, com o passar do tempo começou fazer suas próprias peças e vender para as pessoas mais próximas. Deu tão certo que o interesse por seus modelos foi aumentado e ela viu a possibilidade de seus sonhos tornarem realidade.",
-  "primary_color": "#222831",
-  "secondary_color": "#393e46",
-  "bg_color": "#ffffff",
+  "domain": "atacado.cristianeresende.com.br",
+  "currency_symbol": "R$",
+  "primary_color": "#313131",
   "theme": {
-    "bootswatch": "_"
+    "bootswatch": "_",
+    "custom": "_"
   },
-  "logo": "/img/uploads/logo.png",
-  "mini_logo": "",
-  "icon": "/img/icon.png",
-  "large_icon": "/img/large-icon.png",
-  "favicon": "/img/uploads/favicon.png",
+  "bg_color": "#ffffff",
+  "repository": "ecomplus-stores/atacado-cristiane",
+  "logo": "/img/uploads/logo-cr-white.png",
+  "name": "Atacado Cristiane Resende",
+  "short_name": "atacado-cristiane-resende",
   "lang": "pt_br",
   "currency": "BRL",
-  "currency_symbol": "R$",
-  "country_code": "BR"
+  "mini_logo": "",
+  "font_family": "_",
+  "favicon": "/img/uploads/favicon.png",
+  "icons_font": "_",
+  "country_code": "BR",
+  "secondary_color": "#a07671",
+  "icon": "/img/uploads/favicon.png",
+  "store_id": 51405,
+  "description": "CR nasceu em 2007, a partir de um sonho de Cristiane Resende em criar roupas capaz de libertar o espírito sonhador de cada mulher. Sempre atuando no ramo da moda, com o passar do tempo começou fazer suas próprias peças e vender para as pessoas mais próximas. Deu tão certo que o interesse por seus modelos foi aumentado e ela viu a possibilidade de seus sonhos tornarem realidade.",
+  "large_icon": "/img/uploads/favicon.png"
 }
