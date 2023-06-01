@@ -23,19 +23,24 @@
   "stamps": [
     {
       "src": "/img/uploads/ssl-safe.png",
-      "alt": "Secure connection",
-      "width": 150,
-      "height": 62
+      "alt": "Secure connection"
     }
   ],
   "payment_methods": {
-    "pix": true,
+    "bb": true,
     "visa": true,
-    "mastercard": true,
+    "boleto": true,
+    "aura": false,
+    "banrisul": false,
     "elo": true,
-    "amex": true,
-    "hipercard": true,
-    "boleto": true
+    "hipercard": false,
+    "hsbc": false,
+    "bradesco": true,
+    "santander": false,
+    "mastercard": true,
+    "citibank": false,
+    "mais": false,
+    "itau": true
   },
-  "credits": ""
+  "credits": "Todos os direitos reservados a Cristiane Resende Moda Feminina"
 }

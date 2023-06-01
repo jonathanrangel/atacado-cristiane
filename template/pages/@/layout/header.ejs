@@ -23,6 +23,11 @@ let marketingStripeStyle = ''
   }
 })
 
+// store logo object
+const logo = _.settings.logo
+  ? { url: _.settings.logo, alt: _.settings.name }
+  : _.store.logo
+
 // list featured categories
 let categories = []
 let isCategoriesNavFull
@@ -45,10 +50,6 @@ if (header.categories_list) {
   }
   isCategoriesNavFull = header.categories_list.full_width
 }
-const hasMegamenu = header.desktop_megamenu
-const isAlphabeticalOrderSubmenu = header.alphabetical_order_submenu
-const fullWidthSubmenu = header.full_width_submenu
-const isCentralizedLogo = header.centralized_logo
 %>
 
 <div id="overlay" class="fade"></div>
@@ -122,10 +123,10 @@ const isCentralizedLogo = header.centralized_logo
 
 <header class="header" id="header">
   <div class="header__container container-fluid">
-    <div class="header__row row<%= isCentralizedLogo ? ' header__row--centralized-logo' : '' %><%= isCentralizedLogo && isCategoriesNavFull ? ' header__row--full-width' : '' %>">
-      <div class="col-auto p-0 header__toggler-block">
+    <div class="header__row row">
+      <div class="col-auto p-0">
         <button
-          class="btn header__toggler<%= hasMegamenu ? ' d-lg-none' : '' %>"
+          class="btn header__toggler"
           type="button"
           onclick="toggleSidenav()"
           aria-label="Toggle side navigation"
@@ -139,13 +140,24 @@ const isCentralizedLogo = header.centralized_logo
         </button>
       </div>
 
-      <div class="col col-lg-auto pl-1 pl-md-2 pl-lg-3 header__logo-block">
-        <a href="/">
-          <%- await include('@/layout/inc/logo', { _ }) %>
-        </a>
+      <div class="col col-lg-auto pl-1 pl-md-2 pl-lg-3">
+        <h1>
+          <a href="/" title="Cristiane Resende - Moda Feminina, Moda Evangélica e Moda Executiva" rel="home">
+            <% if (logo && logo.url) { %>
+              <img
+                id="logo"
+                class="header__logo"
+                src="<%= logo.url %>"
+                alt="Cristiane Resende"
+              >
+            <% } else { %>
+              <%= _.settings.name || _.store.name %>
+            <% } %>
+          </a>
+        </h1>
       </div>
 
-      <div class="order-lg-last col-auto p-0 header__buttons-block">
+      <div class="order-lg-last col-auto p-0">
         <div
           class="header__buttons"
           role="group"
@@ -266,55 +278,13 @@ const isCentralizedLogo = header.centralized_logo
       <% } %>
 
       <% if (categories && categories.length) { %>
-        <div class="d-none d-lg-block <%= isCategoriesNavFull ? 'col-12 order-lg-last' : 'col' %> header__nav-block">
+        <div class="d-none d-lg-block <%= isCategoriesNavFull ? 'col-12 order-lg-last' : 'col' %>">
           <nav class="header__nav<%= isCategoriesNavFull ? ' header__nav--full' : '' %>">
-            <% categories.forEach(({ slug, name, _id}) => { %>
-              <% let $categoryLink %>
-              <div class="d-inline-block">
-                <a
-                  href="javascript:;"
-                  class="header__category"
-                  id="cd-<%= _id %>"
-                  <%- hasMegamenu
-                    ? `onmouseover="toggleSubmenu('${slug}', this)" onclick="toggleSubmenu('${slug}', this, true)"`
-                    : `onclick="toggleSidenav('${slug}')"` %>
-                >
-                  <%= name %>
-                </a>
-                <%- $categoryLink %>
-                <%  if (slug && hasMegamenu) { %>
-                  <% const subcategories = _.categories.filter(({ parent }) => parent && parent.slug === slug) %>
-                  <% if (subcategories.length) { %>
-                    <%
-                      if (isAlphabeticalOrderSubmenu) {
-                        subcategories.sort((a, b)=> {
-                          return b.name > a.name ? -1 : 1
-                        })
-                      }
-                    %>
-                    <nav class="header__submenu<%= fullWidthSubmenu ? ' header__submenu--full' : '' %>" id="<%= `s-${slug.replace(/\//g, '_')}` %>">
-                      <% subcategories.forEach(subcategory => { %>
-                        <div>               
-                          <a id="sd-<%= subcategory._id %>" href="/<%= subcategory.slug %>"><%= subcategory.name %></a>
-                          <% const thirdCategories = _.categories.filter(({ parent }) => parent && parent.slug === subcategory.slug) %>
-                          <%
-                            if (isAlphabeticalOrderSubmenu) {
-                              thirdCategories.sort((a, b)=> {
-                                return b.name > a.name ? -1 : 1
-                              })
-                            }
-                          %>
-                          <% thirdCategories.forEach(thirdCategory => { %>
-                            <a id="td-<%= thirdCategory._id %>" class="header__submenu-subcategory" href="/<%= thirdCategory.slug %>">
-                              <%= thirdCategory.name %>
-                            </a>
-                          <% }) %>
-                        </div>
-                      <% }) %>
-                    </nav>
-                  <% } %>
-                <% } %>
-              </div>
+            <a id="inicio" href="/">Início</a>
+            <% categories.forEach(({ slug, name }) => { %>
+              <a href="javascript:;" onclick="toggleSidenav('<%= slug %>')">
+                <%= ` ${name} ` %>
+              </a>
             <% }) %>
           </nav>
         </div>

@@ -1,11 +1,3 @@
-<%
-const stamps = _.cms('stamps') || {}
-let stampsList
-if (stamps && Array.isArray(stamps.stamps_list) && stamps.stamps_list.length) {
-  stampsList = stamps.stamps_list
-}
-%>
-
 <div id="product-block" class="product-block my-4 mb-lg-5">
   <div class="container">
     <section
@@ -26,59 +18,22 @@ if (stamps && Array.isArray(stamps.stamps_list) && stamps.stamps_list.length) {
         <div class="col-12 col-md-6 mb-4">
           <!-- Picture(s) gallery will be inserted dynamically within `TheProduct` -->
           <% if (_.state.pictures) { %>
-            <% const imgObj = _.ecomUtils.img(_.state, null, 'big') %>
+            <% const imgObj = _.ecomUtils.img(_.state, null, 'zoom') %>
             <% if (imgObj) { %>
-              <% const [width, height] = (imgObj.size || '').split('x').map(px => parseInt(px, 10)) %>
               <div id="product-gallery">
-                <div data-slot="stamps">
-                  <% if (Array.isArray(stampsList) && stampsList.length) { %>
-                    <div class="product__stamps">
-                      <% for (stamp of stampsList) { 
-                        if (stamp.img && (!stamp.skus || !stamp.skus.length || stamp.skus.includes(_.state.sku))) {
-                          %>
-                          <span class="product__stamps-<%= stamp.id && stamp.id.toLowerCase().replace(/\s/g, '-') %>">
-                            <img src="<%= stamp.img %>" alt="<%= stamp.id %>">
-                          </span>
-                        <% } %>
-                      <% } %>
-                    </div>
-                  <% } %>
-                </div>
-                <div
-                  class="product__picture"
-                  <% if (width) { %>
-                    style="max-width: <%= width %>px"
-                  <% } %>  
-                >
-                  <picture
-                    <% if (width && height) { %>
-                      class="picture"
-                      style="--aspect-ratio-pc: <%= Math.round(height * 100 * 10000 / width) / 10000 %>%"
+                <picture class="product__picture">
+                  <source
+                    srcset="<%= imgObj.url %>"
+                    type="image/webp"
+                  >
+                  <img
+                    src="<%= imgObj.url.replace(/\.webp$/, '') %>"
+                    alt="<%= imgObj.alt %>"
+                    <% if (imgObj.url.startsWith('https://ecoms1.com/')) { %>
+                      crossorigin="anonymous"
                     <% } %>
                   >
-                    <source
-                      srcset="<%= _.ecomUtils.img(_.state).url %>"
-                      type="image/webp"
-                      media="(max-width: 399.98px)"
-                    >
-                    <source
-                      srcset="<%= imgObj.url %>"
-                      type="image/webp"
-                      media="(min-width: 400px)"
-                    >
-                    <img
-                      src="<%= imgObj.url.replace(/\.webp$/, '') %>"
-                      alt="<%= imgObj.alt || _.state.name %>"
-                      <% if (imgObj.url.startsWith('https://ecoms1.com/')) { %>
-                        crossorigin="anonymous"
-                      <% } %>
-                      <% if (height) { %>
-                        width="<%= width %>"
-                        height="<%= height %>"
-                      <% } %>
-                    >
-                  </picture>
-                </div>
+                </picture>
               </div>
             <% } %>
           <% } %>
@@ -212,9 +167,6 @@ const productJsonLd = {
     priceCurrency: _.settings.currency,
     price: _.ecomUtils.price(_.state),
     itemCondition: `http://schema.org/${(_.state.condition === 'new' ? 'New' : 'Used')}Condition`,
-    priceValidUntil: _.ecomUtils.onPromotion(_.state) && _.state.price_effective_date && _.state.price_effective_date.end
-      ? _.state.price_effective_date.end.slice(0, 10)
-      : undefined,
     seller: {
       '@type': 'Organization',
       name: _.settings.name || _.store.name
@@ -234,27 +186,7 @@ if (_.state.pictures && _.state.pictures.length) {
 if (_.state.mpn && _.state.mpn[0]) {
   productJsonLd.mpn = _.state.mpn[0]
 }
-if (_.state.gtin && _.state.gtin[0]) {
-  productJsonLd.gtin = _.state.gtin[0]
-}
 %>
-<script id="product-block-jsonld" type="application/ld+json"><%-
+<script type="application/ld+json"><%-
   JSON.stringify(productJsonLd)
 %></script>
-<script type="text/javascript">
-  setTimeout(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const variationId = urlParams.get('variation_id');
-    const variations = window._context.body && window._context.body.variations;
-    if (Array.isArray(variations) && variationId) {
-      const selectedVariation = variations.find(variation => variation._id === variationId);
-      if (selectedVariation) {
-        const $jsonLd = document.querySelector('#product-block-jsonld');
-        const jsonLd = JSON.parse($jsonLd.innerText);
-        jsonLd.sku = selectedVariation.sku;
-        jsonLd.offers.price = selectedVariation.price;
-        document.querySelector('#product-block-jsonld').innerText = JSON.stringify(jsonLd);
-      }
-    }
-  }, 50);
-</script>

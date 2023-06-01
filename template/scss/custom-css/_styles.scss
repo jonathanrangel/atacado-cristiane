@@ -1,1 +1,193 @@
 // Add your custom CSS here.
+@media  screen and (min-width: 1368px) {
+  .pswp__zoom-wrap img {
+    height: 1000px !important;
+    width: auto !important;
+  }
+}
+
+//desktop normal size
+@media  screen and (min-width: 992px) and (max-width: 1367px) {
+  //slider full
+  .banner-slider {
+    max-width: 100%;
+  }
+  .pswp__zoom-wrap img {
+    height: 1000px !important;
+    width: auto !important;
+  }
+}
+// apenas tablet
+@media screen and (min-width: 481px) and (max-width: 991px) {
+  .pswp__zoom-wrap img {
+    height: 1000px !important;
+    width: auto !important;
+  }
+  .pswp__zoom-wrap {
+    transform: translate3d(6%, 1%, 0) scale(1) !important;
+  }
+}
+// apenas mobile
+@media screen and (max-width: 480px) {
+  .pswp__zoom-wrap img {
+    height: 400px !important;
+    width: auto !important;
+  }
+  .checkout__step--current::after {
+    content: '\A aba ativa';
+    white-space: pre;
+  }
+  .checkout__step--past::after {
+    content: '\A editar frete';
+    white-space: pre;
+  }
+  .pswp__zoom-wrap {
+    transform: translate3d(18%, 20%, 0) scale(1) !important;
+  }
+  .products-carousel .glide__arrows i {
+    font-size: 1rem !important;
+  }
+    #scrollToBuy {
+    width: 100%;
+    position:fixed;
+    bottom:19px;
+    z-index:2000;
+    cursor:pointer;
+    outline:none!important
+  }
+}
+.header {
+  & #user-button i, & #cart-button i, &__toggler-icon {
+    color: #fff;
+  }
+  background: #a07671
+}
+.top-bar {
+  @media (min-width: 768px) {
+    &__countdown {
+      display: none;
+    }
+  }
+  &__countdown, &__nav {
+    background: #a07671 !important;
+    color: #fff;
+  }
+  background: #a07671 !important;
+}
+.product__buy button {
+  background: green;
+  border: none;
+  border-radius: 0;
+}
+#search-form {
+  background: #f1f1f1;
+  border-radius: 0;
+}
+.header__search-btn {
+  color: #333;
+}
+.header__nav a {
+  &:hover {
+    background: #fff;
+    color: #a07671;
+  }
+  padding: 10px 16px;
+  color: #fff;
+  border-radius: 0;
+}
+.menu__list a:hover {
+  background: #a07671;
+  color: #fff;
+}
+#inicio {
+  background: #fff;
+  color: #a07671;
+}
+.products-carousel__title {
+  & a {
+    text-transform: uppercase;
+  }
+  &::before {
+    background: none;
+  }
+  position: relative;
+  border-bottom: 1.2px solid #efefef;
+  text-align: start;
+}
+.footer {
+  &__title {
+    color: #e26f8a
+  }
+  background: #f1f1f1;
+}
+.product-card, .products-carousel__item {
+  padding: 0;
+}
+.prices__value, .cart__summary-row, .summary__amount__row:first-child {
+  display: none !important;
+}
+.search-engine__retail .row .col-6.col-md-4.col-lg-3, .search-engine__results .container {
+  padding-left: .2rem;
+  padding-right: .2rem;
+}
+.checkout__step--current {
+  color: var(--success);
+}
+.checkout__step--past, .checkout__step--past:hover {
+   font-weight: 700;
+   color: var(--secondary);
+   pointer-events: none;
+}
+  .prices {
+    & strong {
+      &:after {
+        content: "no cartão";
+        font-weight: normal;
+      }
+    order: 2;
+    font-size: var(--font-size) !important;
+    color: #000;
+    margin-top: 0 !important;
+    }
+    &> span {
+    .prices__discount {
+      & span {
+        font-size: 25px;
+        color: #a07671;
+      }
+        order: 1;
+    }
+    .prices__installments {
+      order: 2;
+      font-weight: bold !important;
+      font-size: 1.1rem;
+    }
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    }
+  display: flex;
+  flex-direction: column
+}
+.product-card .prices__installments span::before {
+content: "de";
+font-weight: normal;
+}
+.menu__btn--close, .menu__btn.btn.collapsed {
+color: #000;
+}
+//hide zoom
+.pswp--open {
+   display: none !important;
+}
+.shipping-calculator__services::before {
+  content: "ESCOLHA SUA FORMA DE ENVIO";
+  font-weight: bold;
+  font-size: 1rem;
+}
+.account-addresses__card + button {
+  display: none;
+}
+.order-info__toggle {
+display: none !important
+}

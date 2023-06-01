@@ -1,17 +1,13 @@
 {
   "marketing_stripe": {
-    "text": "Aproveite nossos descontos de até 50%!",
-    "link": "/promotion"
+    "text": "Seja uma Diva Revendedora! Faça seu cadastro aqui",
+    "link": "https://docs.google.com/forms/d/e/1FAIpQLSdK1twJq3T6vWh1-fdW4fPzxn_7hiSOQeEz3xGSoz9VSSYOIg/viewform"
   },
   "contacts_stripe": {
     "pages": [
       {
-        "title": "Sobre nós",
-        "link": "/pages/sobre-nos"
-      },
-      {
-        "title": "Esta loja é um PWA",
-        "link": "/posts/esta-loja-e-um-pwa"
+        "title": "Seja uma Revendedora. Faça seu cadastro aqui",
+        "link": "/pages/revendedor"
       }
     ],
     "phone_wpp": true,
@@ -19,12 +15,8 @@
   },
   "categories_list": {
     "featured": [],
-    "random": 6,
+    "random": 5,
     "full_width": false
   },
-  "centralized_logo": false,
-  "desktop_megamenu": false,
-  "search_input": true,
-  "alphabetical_order_submenu": false,
-  "full_width_submenu": false
+  "search_input": true
 }
