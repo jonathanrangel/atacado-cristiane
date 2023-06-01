@@ -1,26 +1,22 @@
 {
-  "domain": "ecomplus-storefront.netlify.app",
-  "currency_symbol": "R$",
-  "primary_color": "",
-  "theme": {
-    "bootswatch": "_",
-    "custom": "_"
-  },
-  "icons_font": "_",
-  "font_family": "_",
+  "store_id": 51405,
+  "name": "Atacado Cristiane",
+  "domain": "atacado-cristiane.netlify.app",
+  "short_name": "Atacado Cristiane",
+  "description": "CR nasceu em 2007, a partir de um sonho de Cristiane Resende em criar roupas capaz de libertar o espírito sonhador de cada mulher. Sempre atuando no ramo da moda, com o passar do tempo começou fazer suas próprias peças e vender para as pessoas mais próximas. Deu tão certo que o interesse por seus modelos foi aumentado e ela viu a possibilidade de seus sonhos tornarem realidade.",
+  "primary_color": "#222831",
+  "secondary_color": "#393e46",
   "bg_color": "#ffffff",
-  "repository": "",
+  "theme": {
+    "bootswatch": "_"
+  },
   "logo": "/img/uploads/logo.png",
-  "name": "My Shop",
-  "short_name": "My Shop",
+  "mini_logo": "",
+  "icon": "/img/icon.png",
+  "large_icon": "/img/large-icon.png",
+  "favicon": "/img/uploads/favicon.png",
   "lang": "pt_br",
   "currency": "BRL",
-  "mini_logo": "",
-  "favicon": "/img/uploads/favicon.png",
-  "country_code": "BR",
-  "secondary_color": "",
-  "icon": "/img/icon.png",
-  "store_id": 1052,
-  "description": "My PWA Shop",
-  "large_icon": "/img/large-icon.png"
+  "currency_symbol": "R$",
+  "country_code": "BR"
 }
