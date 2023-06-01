@@ -191,3 +191,19 @@ color: #000;
 .order-info__toggle {
 display: none !important
 }
+.login-modal__btn {
+  &--facebook, &--google, &--windowslive {
+    display: none !important;
+  }
+}
+.login__oauth, .minicart__btn-checkout {
+  display: none !important;
+}
+.minicart__btn-cart {
+  font-size: 0;
+  &::after {
+    content: 'Finalizar Compra';
+    font-size: 1rem !important;
+    font-weight: bold;
+  }
+}
