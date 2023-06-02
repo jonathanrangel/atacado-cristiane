@@ -322,7 +322,7 @@
               <slot
                 name="payment-gateways"
                 v-bind="{ paymentOptions }"
-                v-if="!isQuickview && paymentOptions.length"
+                v-if="!isQuickview && paymentOptions.length && isLogged"
               >
                 <article>
                   <div class="product__payment card mb-3">
