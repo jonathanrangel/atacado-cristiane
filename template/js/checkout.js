@@ -49,6 +49,9 @@ setInterval(function () {
       if (name === 'checkout') {
         emitCheckout1(name)
       }
+      if (name === 'confirmation') {
+        document.getElementById('containerCalc').style.display = 'none'
+      }
     }
 
     if (router1.currentRoute) {

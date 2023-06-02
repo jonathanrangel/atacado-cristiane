@@ -52,9 +52,7 @@
             <div id="product-loading">
               <% if (_.state.available && _.state.visible && _.ecomUtils.inStock(_.state)) { %>
                 <div class="product__price prices prices--big">
-                  <strong class="prices__value">
-                    <%= _.ecomUtils.formatMoney(_.ecomUtils.price(_.state)) %>
-                  </strong>
+                  
                 </div>
               <% } %>
 

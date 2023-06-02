@@ -169,6 +169,9 @@ import {
           const customer = getCustomer()
           this.email = customer.main_email
           this.isCompany = customer.registry_type === 'j'
+          /* if (customer.referral) {
+            window.sessionStorage.setItem('ecomReferral', customer.referral)
+          } */
         }
       }
       ecomPassport.on('login', () => {
