@@ -9,9 +9,9 @@ module.exports = () => ({
       './html/TheProduct.html': path.resolve(__dirname, 'template/js/custom-js/html/TheProduct.html'),
       './js/TheProduct.js': path.resolve(__dirname, 'template/js/custom-js/js/TheProduct.js'),
       './html/ProductGallery.html': path.resolve(__dirname, 'template/js/custom-js/html/ProductGallery.html'),
-      './html/APrices.html': path.resolve(__dirname, 'template/js/custom-js/components/APrices.html'),
-      './js/APrices.js': path.resolve(__dirname, 'template/js/custom-js/components/APrices.js'),
-      './html/ProductCard.html': path.resolve(__dirname, 'template/js/custom-js/components/ProductCard.html'),
+      './html/APrices.html': path.resolve(__dirname, 'template/js/custom-js/html/APrices.html'),
+      './js/APrices.js': path.resolve(__dirname, 'template/js/custom-js/js/APrices.js'),
+      './html/ProductCard.html': path.resolve(__dirname, 'template/js/custom-js/html/ProductCard.html'),
     }
   }
 })
