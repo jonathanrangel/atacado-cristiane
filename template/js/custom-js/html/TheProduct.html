@@ -136,7 +136,7 @@
 
             <slot
               name="variations"
-              v-if="hasVariations"
+              v-if="hasVariations && isLogged"
             >
               <product-variations
                 :product="variationBodyModified"
@@ -182,7 +182,7 @@
             </slot>
 
             <div
-              v-if="isKit"
+              v-if="isKit && isLogged"
               class="product__kit"
             >
               <slot
@@ -228,7 +228,7 @@
               </div>
 
               <div
-                v-else-if="hasBuyButton"
+                v-else-if="hasBuyButton && isLogged"
                 class="product__buy"
                 ref="buy"
               >
