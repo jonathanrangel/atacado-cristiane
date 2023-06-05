@@ -95,11 +95,6 @@ import {
         }
         return price
       },
-
-      isLogged () {
-        window.loggedUser = ecomPassport.checkLogin()
-        return ecomPassport.checkLogin()
-      },
   
       comparePrice () {
         if (checkOnPromotion(this.product)) {
