@@ -86,6 +86,11 @@
         </p>
       </slot>
 
+      <small v-else-if="!isLogged" class="text-muted">
+        <a href="/app/#/account/">Login</a>
+        para ver o preço
+      </small>
+
       <slot
         name="without-price"
         v-else-if="isWithoutPrice"
@@ -100,14 +105,12 @@
           <a-prices
             class="product-card__prices"
             :product="body"
-            :is-logged="isLogged"
             :installments-option="installmentsOption"
             :discount-option="discountOption"
           />
         </slot>
 
         <div
-          v-if="isLogged"
           @click="buy"
           class="product-card__buy fade"
         >
@@ -138,7 +141,7 @@
             </button>
           </slot>
         </div>
-      </template>      
+      </template>
       
       <slot name="favorite">
         <a 
@@ -151,7 +154,7 @@
             :class="isFavorite ? 'active' : null"
           >
           </i>
-        </a>      
+        </a>
       </slot>
 
       <slot name="footer">

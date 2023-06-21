@@ -181,6 +181,21 @@
               </div>
             </slot>
 
+            <template v-if="!isLogged">
+              <span class="text-muted">
+                <a href="/app/#/account/">Acesse sua conta</a>
+                na loja para ver os preços e finalizar compras
+              </span>
+              <a
+                role="button"
+                class="btn btn-lg btn-primary mt-3 mb-4"
+                href="/app/#/account/"
+              >
+                <i class="i-user mr-1"></i>
+                Login/Cadastro
+              </a>
+            </template>
+
             <div
               v-if="isKit && isLogged"
               class="product__kit"
