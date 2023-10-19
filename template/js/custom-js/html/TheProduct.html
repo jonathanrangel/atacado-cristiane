@@ -109,13 +109,12 @@
           </div>
 
           <template v-else>
-            <slot name="prices">
+            <slot v-if="isLogged" name="prices">
               <p class="product__prices">
                 <a-prices
                   :product="ghostProductForPrices"
                   :is-literal="true"
                   :is-big="true"
-                  :is-logged="isLogged"
                   @fix-price="price => fixedPrice = price"
                 />
 
