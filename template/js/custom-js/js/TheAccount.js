@@ -59,7 +59,9 @@ import {
         favoriteIds: [],
         navTabs: [],
         customerEmail: this.customer.main_email || this.ecomPassport.getCustomer().main_email,
-        isAccountCreated: false
+        isAccountCreated: false,
+        hasLog: false,
+        isLoading: false
       }
     },
   
@@ -135,9 +137,9 @@ import {
   
       signup () {
         const endpoint = `https://passport.e-com.plus/v1/${$ecomConfig.get('store_id')}/signup.json`
-        axios.post(endpoint, this.localCustomer).then(() => {
+        axios.post(endpoint, this.localCustomer).then((e) => {
           this.isAccountCreated = true
-        })
+        }).catch((e) => console.log(e))
       }
     },
   

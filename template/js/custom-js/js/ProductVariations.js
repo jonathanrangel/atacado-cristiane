@@ -43,7 +43,9 @@ import {
     data () {
       return {
         selectedOptions: {},
-        filteredGrids: {}
+        filteredGrids: {},
+        together: [],
+        buyTogether: []
       }
     },
   
@@ -144,6 +146,31 @@ import {
       'product.variations': {
         handler () {
           this.filteredGrids = getVariationsGrids(this.product, null, true)
+        },
+        deep: true,
+        immediate: true
+      },
+
+      together: {
+        handler (current, old) {
+          const keyCurrent = Object.keys(current)
+          if (keyCurrent && keyCurrent.length && keyCurrent[0].length > 5) {
+            const hasItem = this.buyTogether.some(item => {
+              const itemId = Object.keys(item)
+              return itemId[0] === keyCurrent[0]
+            })
+            if (!this.buyTogether.length || !hasItem) {
+              this.buyTogether.push(current)
+            } else if (hasItem) {
+              this.buyTogether.map((item, i) => {
+                const keyItem = Object.keys(item)
+                if (hasItem) {
+                  item[keyItem[0]] = current[keyCurrent]
+                }
+              })
+            }
+          }
+          this.$emit('update:atacado', this.buyTogether)
         },
         deep: true,
         immediate: true

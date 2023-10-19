@@ -162,7 +162,8 @@ import {
         paymentOptions: [],
         customizations: [],
         kitItems: [],
-        currentTimer: null
+        currentTimer: null,
+        atacado: []
       }
     },
   
@@ -212,7 +213,7 @@ import {
       },
 
       name () {
-        return this.selectedVariation.name || getName(this.body)
+        return getName(this.body)
       },
   
       isInStock () {
@@ -408,17 +409,15 @@ import {
         this.hasClickedBuy = true
         const product = sanitizeProductBody(this.body)
         let variationId
-        if (this.hasVariations) {
-          if (this.selectedVariationId) {
-            variationId = this.selectedVariationId
-          } else {
-            return
-          }
-        }
-        const customizations = [...this.customizations]
-        this.$emit('buy', { product, variationId, customizations })
-        if (this.canAddToCart) {
-          ecomCart.addProduct({ ...product, customizations }, variationId, this.qntToBuy)
+        if (this.atacado && this.atacado.length) {
+          this.atacado.forEach(item => {
+            const id = Object.keys(item)
+            variationId = id && id.length && id[0]
+            if (item[variationId] > 0) {
+              this.$emit('buy', { product, variationId })
+              ecomCart.addProduct({ ...product }, variationId, item[variationId])
+            }
+          })
         }
         this.isOnCart = true
       },
@@ -433,14 +432,6 @@ import {
     },
   
     watch: {
-      selectedVariationId (variationId) {
-        if (variationId) {
-          if (this.hasClickedBuy) {
-            this.hasClickedBuy = false
-          }
-          this.showVariationPicture(this.selectedVariation)
-        }
-      },
   
       fixedPrice (price) {
         if (price > 0 && !this.isQuickview) {

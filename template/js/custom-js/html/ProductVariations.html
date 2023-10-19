@@ -41,9 +41,11 @@
           filteredGrids[grid].includes(optionText) ? null : 'd-none']"
         >
           <quantity-selector
+              v-if="product.variations[index].quantity"
               :items="[{ _id: product.variations[index]._id, quantity: 0, max_quantity: product.variations[index].quantity }]"
               :max="product.max_quantity > 3 ? 3 : product.max_quantity"
               :has-buy-button="false"
+              :together.sync="together"
               @set-quantity="({ quantity }) => qntToBuy = quantity"
           />
           {{ optionText }}

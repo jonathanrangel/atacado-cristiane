@@ -99,6 +99,10 @@ import {
               if (!response || response.status !== 403) {
                 console.error(err)
                 this.failAlertText = i18n(i19loginErrorMsg)
+                if (response.status === 401) {
+                  this.failAlertText = 'Seu cadastro ainda está em análise.'
+                }
+                
               } else if (!isAccountConfirm && this.canAcceptGuest) {
                 this.$emit('update:customer-email', email)
                 emitUpdate()

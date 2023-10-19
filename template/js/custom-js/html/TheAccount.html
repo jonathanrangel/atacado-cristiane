@@ -100,7 +100,7 @@
       </div>
     </div>
   
-    <div v-else-if="customerEmail" style="max-width: 600px; margin: 0 auto;">
+    <div v-else-if="customerEmail && !customer._id.length" style="max-width: 600px; margin: 0 auto;">
       <template v-if="!isAccountCreated">
         <p class="lead">
           Cadastre-se pelo formulário abaixo
@@ -119,7 +119,7 @@
         os preços e comprar na loja após a aprovação da conta.
       </p>
     </div>
-  
+
     <login-block
       v-else
       class="account__login"
@@ -127,5 +127,7 @@
       :customer-email.sync="customerEmail"
       :can-accept-guest="true"
     />
+  
+    
   </div>
   
