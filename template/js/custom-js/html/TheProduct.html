@@ -442,7 +442,7 @@
     </div>
   </transition>
 
-  <template v-if="!isQuickview && hasStickyBuyButton && body.available && isInStock">
+  <template v-if="!isQuickview && hasStickyBuyButton && body.available && isInStock && isLogged">
     <transition
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut fast" 
