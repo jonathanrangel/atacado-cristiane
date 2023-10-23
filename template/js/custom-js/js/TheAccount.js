@@ -123,6 +123,7 @@ import {
   
       login (ecomPassport) {
         if (ecomPassport.checkAuthorization()) {
+          window.location = '/'
           this.localCustomer = ecomPassport.getCustomer()
           this.$emit('login', ecomPassport)
         }

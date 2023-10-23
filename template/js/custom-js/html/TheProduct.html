@@ -141,7 +141,7 @@
                 :product="variationBodyModified"
                 :selected-id.sync="selectedVariationId"
                 :max-options-btns="maxVariationOptionsBtns"
-                :atacado.sync="atacado"
+                @atacado="getAtacado"
                 @select-option="handleGridOption"
               />
               <a-alert :can-show="hasClickedBuy && !atacado.length">

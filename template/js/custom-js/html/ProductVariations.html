@@ -36,6 +36,7 @@
         <div 
           v-for="(optionText, index) in options"
           class="variations__option btn btn-light"
+          :key="product.variations[index]._id"
           :class="[ 
           `variations__option--${optionText}`, 
           filteredGrids[grid].includes(optionText) ? null : 'd-none']"
@@ -45,7 +46,7 @@
               :items="[{ _id: product.variations[index]._id, quantity: 0, max_quantity: product.variations[index].quantity }]"
               :max="product.max_quantity > 3 ? 3 : product.max_quantity"
               :has-buy-button="false"
-              :together.sync="together"
+              @together="getItems"
               @set-quantity="({ quantity }) => qntToBuy = quantity"
           />
           {{ optionText }}

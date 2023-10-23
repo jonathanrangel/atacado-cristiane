@@ -306,6 +306,10 @@ import {
     methods: {
       getVariationsGrids,
       getSpecValueByText,
+
+      getAtacado (value) {
+        this.atacado = value
+      },
   
       setBody (data) {
         this.body = {

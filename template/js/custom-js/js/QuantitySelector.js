@@ -91,7 +91,6 @@ import {
   
       changeQnt (item, qntDiff, ev) {
         const { selectedQnts, remainingQuantity } = this
-        console.log(selectedQnts)
         const lastQnt = selectedQnts[item._id]
         let newQnt
         if (qntDiff) {
@@ -171,8 +170,7 @@ import {
     watch: {
         selectedQnts: {
           handler (current, old) {
-            this.$emit('update:together', current)
-            console.log(current)
+            this.$emit('together', current)
           },
           deep: true,
           immediate: true

@@ -101,6 +101,10 @@ import {
       getGridTitle (grid) {
         return getGridTitle(grid, this.gridsData)
       },
+
+      getItems (value) {
+        this.together = value
+      },
   
       selectOption (optionText, grid, gridIndex) {
         const { product, selectedOptions, orderedGrids } = this
@@ -155,22 +159,18 @@ import {
         handler (current, old) {
           const keyCurrent = Object.keys(current)
           if (keyCurrent && keyCurrent.length && keyCurrent[0].length > 5) {
-            const hasItem = this.buyTogether.some(item => {
+            const hasItem = this.buyTogether.findIndex(item => {
               const itemId = Object.keys(item)
               return itemId[0] === keyCurrent[0]
             })
-            if (!this.buyTogether.length || !hasItem) {
-              this.buyTogether.push(current)
-            } else if (hasItem) {
-              this.buyTogether.map((item, i) => {
-                const keyItem = Object.keys(item)
-                if (hasItem) {
-                  item[keyItem[0]] = current[keyCurrent]
-                }
-              })
+            if (!this.buyTogether.length || !(hasItem >= 0)) {
+              const clone = Object.assign({}, current);
+              this.buyTogether.push(clone)
+            } else if (hasItem >= 0) {
+              this.buyTogether[hasItem][keyCurrent[0]] = current[keyCurrent]  
             }
           }
-          this.$emit('update:atacado', this.buyTogether)
+          this.$emit('atacado', this.buyTogether)
         },
         deep: true,
         immediate: true
