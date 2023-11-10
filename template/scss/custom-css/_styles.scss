@@ -210,3 +210,7 @@ display: none !important
 .quantity-selector__btn-container {
   min-width: unset !important;
 }
+
+.shipping-line[data-service-code="PROPRIA"] span {
+  display: none;
+}

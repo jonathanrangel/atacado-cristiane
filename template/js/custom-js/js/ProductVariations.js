@@ -56,6 +56,22 @@ import {
       variationsGrids () {
         return getVariationsGrids(this.product)
       },
+
+      productWithMetafied () {
+        const modifiedProduct = Object.assign({}, this.product)
+        const { metafields } = this.product
+        if (modifiedProduct.variations && modifiedProduct.variations.length && metafields && metafields.length) {
+          modifiedProduct.variations.map((variation, i) => {
+            const metafield = metafields.find(({ namespace, _id }) => (namespace || _id) === variation._id)
+            if (metafield && metafield.value) {
+              console.log(console.log(metafield.value))
+              variation.quantity = Number(metafield.value) > variation.quantity ? variation.quantity : Number(metafield.value)
+            }
+            return variation    
+          })
+        }
+        return modifiedProduct
+      },
   
       orderedGrids () {
         return Object.keys(this.variationsGrids)
