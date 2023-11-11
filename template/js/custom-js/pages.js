@@ -7,3 +7,7 @@ if (window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && win
         console.log(checkProduct)
     }
 }
+
+if (!window.sessionStorage.getItem('buyTimer')) {
+    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
+}

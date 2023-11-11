@@ -52,6 +52,66 @@ const logo = _.settings.logo
   </header>
 
   <main id="spa">
+    <div class="timer-all container" style="display: none;">
+      <div class="text-timer" style="text-align: center;">
+        Tempo para finalizar a compra (estoque reservado). Caso seu tempo esgote, poderá continuar realizando a compra, mas poderá perder alguns itens.
+      </div>
+      <div id="timer-banner" class="container timer-banner">
+        <div class="container-segment">
+          <div class="segment">
+            <div class="flip-card" data-hours-tens>
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+            </div>
+            <div class="flip-card" data-hours-ones>
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+            </div>
+          </div>
+          <div class="segment-title">Horas</div>
+        </div>
+        <div class="container-segment">
+          <div class="segment">
+            <div class="flip-card" data-minutes-tens>
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+            </div>
+            <div class="flip-card" data-minutes-ones>
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+            </div>
+          </div>
+          <div class="segment-title">Minutos</div>
+        </div>
+        <div class="container-segment">
+          <div class="segment">
+            <div class="flip-card" data-seconds-tens>
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+            </div>
+            <div class="flip-card" data-seconds-ones>
+              <div class="top">0</div>
+              <div class="bottom">0</div>
+            </div>
+          </div>
+          <div class="segment-title">Segundos</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      if (window.sessionStorage.getItem('buyTimer')) {
+        const jsonTimer = window.sessionStorage.getItem('buyTimer')
+        const json = JSON.parse(jsonTimer)
+        if (json.dateCart && json.dateEndCart) {
+          document.querySelector('.timer-all').style.display = 'block'
+          console.log(document.querySelector('.timer-all'))
+          setTimeout(() => {
+            window.timerFunction(json.dateCart, json.dateEndCart, '#timer-banner')
+          }, 500)
+        }
+      }
+      
+    </script>
     <div id="containerCalc" class="container" style="padding: 1rem; margin-top: 1rem; border: 1px solid #ccc">
       <span id="lessSome" style="display: none">Faltam <strong id="lessUnit"></strong> unidade(s) no carrinho<span id="showUnit"> para</span> finalizar a compra</span>
       <span id="noMore" style="display: none">Você já <b>completou</b> o <b>Pedido Mínimo</b>, continue e <b>finalize a compra</b>, ou <b>continue comprando</b>!</span>
