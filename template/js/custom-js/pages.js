@@ -9,5 +9,5 @@ if (window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && win
 }
 
 if (!window.sessionStorage.getItem('buyTimer')) {
-    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
+    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: 0 }))
 }
