@@ -25,24 +25,7 @@
     },
     {
       "type": "banners-grid",
-      "banners": [
-        {
-          "img": "/img/uploads/sintonia-6_easy-resize.com.jpg",
-          "alt": "Vestidos Fluídos",
-          "link": "https://cristianeresende.com.br/vestidos-fluidos"
-        },
-        {
-          "img": "/img/uploads/sintonia-7_easy-resize.com.jpg",
-          "alt": "Vestidos Justos",
-          "link": "https://cristianeresende.com.br/vestidos-justos",
-          "mobile_img": ""
-        },
-        {
-          "img": "/img/uploads/sintonia-5_easy-resize.com.jpg",
-          "alt": "Todos os Vestidos",
-          "link": "https://cristianeresende.com.br/todos-os-vestidos"
-        }
-      ]
+      "banners": []
     },
     {
       "type": "info-bar",
