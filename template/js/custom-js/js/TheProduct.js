@@ -212,12 +212,23 @@ import {
         }
       },
 
+      stillHavingProduct () {
+        const { variations } = this.variationBodyModified
+        let quantity = 0
+        variations.forEach(variation => quantity += variation.quantity)
+        return quantity
+      },
+
       name () {
         return getName(this.body)
       },
   
       isInStock () {
-        return checkInStock(this.body)
+        const stock = checkInStock(this.body)
+        if (stock === false) {
+          return false
+        }
+        return Boolean(this.stillHavingProduct && this.stillHavingProduct > 0) 
       },
   
       isWithoutPrice () {
