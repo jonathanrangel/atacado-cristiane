@@ -215,7 +215,11 @@ import {
       stillHavingProduct () {
         const { variations } = this.variationBodyModified
         let quantity = 0
-        variations.forEach(variation => quantity += variation.quantity)
+        variations.forEach(variation => {
+          if (variation.quantity) {
+            quantity += variation.quantity
+          }
+        })
         return quantity
       },
 
@@ -225,6 +229,7 @@ import {
   
       isInStock () {
         const stock = checkInStock(this.body)
+        console.log(stock)
         if (stock === false) {
           return false
         }
