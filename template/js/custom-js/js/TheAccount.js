@@ -96,6 +96,10 @@ import {
   
       nickname () {
         return getNickname(this.customer)
+      },
+
+      customerCheck () {
+        return this.ecomPassport.customer || this.customer
       }
     },
   
@@ -123,7 +127,7 @@ import {
   
       login (ecomPassport) {
         if (ecomPassport.checkAuthorization()) {
-          window.location = '/'
+          // window.location = '/'
           this.localCustomer = ecomPassport.getCustomer()
           this.$emit('login', ecomPassport)
         }
