@@ -100,7 +100,7 @@
       </div>
     </div>
   
-    <div v-else-if="customerEmail && !(this.customerCheck && this.customerCheck._id && this.customerCheck._id.length)" style="max-width: 600px; margin: 0 auto;">
+    <div v-else-if="customerEmail && !(customerCheck && customerCheck._id && customerCheck._id.length)" style="max-width: 600px; margin: 0 auto;">
       <template v-if="!isAccountCreated">
         <p class="lead">
           Cadastre-se pelo formulário abaixo

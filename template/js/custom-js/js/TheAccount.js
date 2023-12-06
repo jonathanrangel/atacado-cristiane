@@ -141,10 +141,11 @@ import {
       },
   
       signup () {
+        console.log(this.customerEmail && !(this.customerCheck && this.customerCheck._id && this.customerCheck._id.length))
         const endpoint = `https://passport.e-com.plus/v1/${$ecomConfig.get('store_id')}/signup.json`
         axios.post(endpoint, this.localCustomer).then((e) => {
           this.isAccountCreated = true
-        }).catch((e) => console.log(e))
+        }).catch((e) => this.isAccountCreated = false)
       }
     },
   
