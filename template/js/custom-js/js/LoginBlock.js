@@ -18,6 +18,91 @@ import {
   import ecomPassport from '@ecomplus/passport-client'
   import AAlert from '@ecomplus/storefront-components/src/AAlert.vue'
   import InputDocNumber from '@ecomplus/storefront-components/src/InputDocNumber.vue'
+
+  const updateSpec = async (id) => {
+    callApi(`products/${id}.json`, 'GET', (err, json) => {
+      console.log(json)
+      const specs = {
+        "specifications": {
+          "colors": [
+            {
+              "text": "Off White"
+            }
+          ],
+          "age_group": [
+            {
+              "text": "Adulto",
+              "value": "adult"
+            }
+          ],
+          "gender": [
+            {
+              "text": "Masculino",
+              "value": "male"
+            }
+          ]
+        }
+      }
+    })
+  }
+ /*  let index = 0
+  const getAllProducts = () => {
+    const ids = Tabs[window.tabId].selectedItems
+    if (index === ids.length) {
+      console.log('done')
+    } else {
+      callApi(`products/${ids[index]}.json`, 'GET', (err, json) => {
+        if (!err) {
+          const specifications = json.specifications || {}
+          const name = json.name || ''
+          if (specifications) {
+            ['gender', 'colors', 'age_group'].forEach(key => {
+              let text, value
+                if (key === 'gender') {
+                  value = name.includes('Feminina') ? 'female' : 'male'
+                  text = value === 'famale' ? 'Feminino' : 'Masculino'
+                  specifications[key] = [{
+                    text,
+                    value
+                  }]
+                } else if (key === 'colors') {
+                  const arrayName = name.split('-')
+                  const colorI = arrayName[arrayName.length - 1].trim()
+                  let color = colorI
+                  if (color === 'vermelhita') {
+                    color = 'Vermelho'
+                  }
+                  if (arrayName.length > 1) {
+                    specifications[key] = [{
+                      text: color
+                    }]
+                  } 
+                } else {
+                  const isKid = name.includes('kid')
+                  specifications[key] = [{
+                    text: isKid ? 'Kids' : 'Adult',
+                    value: isKid ? 'kids' : 'adult'
+                  }]
+                }
+            })
+          }
+          console.log(specifications, name)
+          if (Object.keys(specifications).length) {
+            callApi(`products/${ids[index]}.json`, 'PATCH', (error, result) => {
+              if (!error) {
+                index++
+                getAllProducts()
+              }
+            }, { specifications })
+          } else {
+            index++
+            getAllProducts()
+          }
+        }
+      })
+    }
+  }
+  getAllProducts() */
   
   export default {
     name: 'LoginBlock',
