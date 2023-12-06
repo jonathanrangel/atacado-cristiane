@@ -61,8 +61,7 @@ import {
         customerEmail: this.customer.main_email || this.ecomPassport.getCustomer().main_email,
         isAccountCreated: false,
         hasLog: false,
-        isLoading: false,
-        isFirstRegister: false
+        isLoading: false
       }
     },
   
@@ -128,9 +127,6 @@ import {
   
       login (ecomPassport) {
         if (ecomPassport.checkAuthorization()) {
-          if (this.isFirstRegister) {
-            window.location = '/'
-          }
           this.localCustomer = ecomPassport.getCustomer()
           this.$emit('login', ecomPassport)
         }
@@ -144,11 +140,11 @@ import {
       },
   
       signup () {
-        console.log(this.customerEmail && !(this.customerCheck && this.customerCheck._id && this.customerCheck._id.length))
         const endpoint = `https://passport.e-com.plus/v1/${$ecomConfig.get('store_id')}/signup.json`
         axios.post(endpoint, this.localCustomer).then((e) => {
           this.isAccountCreated = true
-        }).catch((e) => this.isFirstRegister = true)
+          window.location = '/'
+        }).catch((e) => console.log(e))
       }
     },
   
