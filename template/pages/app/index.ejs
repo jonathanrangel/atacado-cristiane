@@ -99,18 +99,20 @@ const logo = _.settings.logo
       </div>
     </div>
     <script>
-      if (window.sessionStorage.getItem('buyTimer')) {
-        const jsonTimer = window.sessionStorage.getItem('buyTimer')
-        const json = JSON.parse(jsonTimer)
-        if (json.dateCart && json.dateEndCart) {
-          document.querySelector('.timer-all').style.display = 'block'
-          console.log(document.querySelector('.timer-all'))
-          setTimeout(() => {
-            window.timerFunction(json.dateCart, json.dateEndCart, '#timer-banner')
-          }, 500)
+      setInterval(() => {
+        if (window.sessionStorage.getItem('buyTimer')) {
+          const jsonTimer = window.sessionStorage.getItem('buyTimer')
+          const json = JSON.parse(jsonTimer)
+          if (json.dateCart && json.dateEndCart && document.querySelector('.timer-all').style.display !== 'block') {
+            document.querySelector('.timer-all').style.display = 'block'
+            console.log(document.querySelector('.timer-all'))
+            setTimeout(() => {
+              window.timerFunction(json.dateCart, json.dateEndCart, '#timer-banner')
+            }, 500)
+          }
         }
-      }
       
+      }, 1000)
     </script>
     <div id="containerCalc" class="container" style="padding: 1rem; margin-top: 1rem; border: 1px solid #ccc">
       <span id="lessSome" style="display: none">Faltam <strong id="lessUnit"></strong> unidade(s) no carrinho<span id="showUnit"> para</span> finalizar a compra</span>

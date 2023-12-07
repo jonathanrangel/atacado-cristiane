@@ -74,7 +74,7 @@ window.timerFunction = (endDate, newEnd, $div) => {
     countToDate = timeEnd
   }
   let previousTimeBetweenDates
-  const timerBanner = setInterval(() => {
+  setInterval(() => {
     const currentDate = new Date()
     const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000)
     const correctTimer = timeBetweenDates > 0 ? timeBetweenDates : 0
