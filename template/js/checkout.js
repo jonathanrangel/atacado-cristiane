@@ -65,7 +65,8 @@ setInterval(function () {
 window.timerFunction = (endDate, newEnd, $div) => {
   console.log($div, endDate)
   let countToDate
-  const timeEnd = new Date(endDate).getTime()
+  const endTime = window.ecomCart && window.ecomCart.data && window.ecomCart.data.created_at || endDate
+  const timeEnd = new Date(endTime).getTime()
   const tomorrow = new Date(newEnd).getTime()
   const diffTime =  tomorrow - timeEnd
   if (diffTime > 0) {
