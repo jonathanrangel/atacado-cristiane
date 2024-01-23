@@ -329,3 +329,10 @@ display: none !important
       width: 45px;
   }
 }
+
+
+.order-info__shipping-freight {
+  .shipping-line, .order-info__shipping-nfe {
+    display: none !important;
+  }
+} 
