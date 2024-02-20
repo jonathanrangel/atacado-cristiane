@@ -5,6 +5,7 @@ var lessUnit = document.getElementById('lessUnit')
 var firstphrase = document.getElementById('lessSome')
 var lastphrase = document.getElementById('noMore')
 var lessQuantity = 5
+window.lessQuantity = lessQuantity
 lessUnit.innerHTML = lessQuantity
 ecomCart.on('change', ({ data }) => {
   var cartCalc = document.querySelectorAll('#cart')
