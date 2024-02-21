@@ -61,7 +61,9 @@ import {
         isCouponApplied: false,
         books: [
             { title: "Nenhum vendedor" },
-            { title: "Sandy" }
+            { title: "Sandy" },
+            { title: "Bruna" }
+            
         ],
         seller: null
       }
@@ -88,22 +90,48 @@ import {
         set (couponCode) {
           this.$emit('update:discount-coupon', couponCode)
         }
+      },
+
+      quantityBuy () {
+        return window.countQuantity
+      }, 
+
+      utmSetter: {
+        get () {
+          const storageKey = 'ecomUtm'
+          const utm = JSON.parse(sessionStorage.getItem(storageKey)) || {}
+          const source = utm['source']
+          const campaign = utm['campaign']
+          if (source && source.toLowerCase() === 'atendimento' && campaign) {
+            return campaign
+          }
+          return 'Nenhum vendedor'
+        },
+        set (seller) {
+          this.seller = seller
+        }
+        
       }
     },
   
     methods: {
       formatMoney,
 
-      getSelect (seller) {
+      getSelect (sell) {
+        const { sessionStorage } = window
+        const storageKey = 'ecomUtm'
+        const utm = JSON.parse(sessionStorage.getItem(storageKey)) || {}
+        const seller = sell && sell.title
+        this.utmSetter = seller
         if (!seller.includes('Nenhum')) {
           this.seller = seller
-          const { sessionStorage } = window
-          const storageKey = 'ecomUtm'
-          const utm = JSON.parse(sessionStorage.getItem(storageKey)) || {}
           utm['campaign'] = seller
           utm['source'] = 'atendimento'
-          sessionStorage.setItem(storageKey, JSON.stringify(utm))
+        } else {
+          delete utm['campaign']
+          delete utm['source']
         }
+        sessionStorage.setItem(storageKey, JSON.stringify(utm))
       }, 
   
       selectShippingService (service) {

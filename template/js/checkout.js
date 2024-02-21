@@ -40,6 +40,7 @@ setInterval(function () {
   if (router1) {
     const emitCheckout1 = (name) => {
       var countQuantity = ecomCart.data.items.reduce((acc, curr) => acc + curr.quantity, 0)
+      window.countQuantity = countQuantity
       if (countQuantity < lessQuantity) {
        window.location.href = '/app/#/cart'
        window.alert('Apenas ' + countQuantity + ' itens no carrinho. Um deles acabou estoque! Você estará sendo direcionado para o carrinho para inserir mais um item')
