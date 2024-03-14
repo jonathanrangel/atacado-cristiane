@@ -11,3 +11,7 @@ if (window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && win
 if (!window.sessionStorage.getItem('buyTimer')) {
     window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: 0 }))
 }
+
+if (window.sessionStorage.getItem('ecomUtm')) {
+    window.localStorage.setItem('ecomUtm', window.sessionStorage.getItem('ecomUtm'))
+}
