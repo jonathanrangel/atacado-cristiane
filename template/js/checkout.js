@@ -4,7 +4,7 @@ import ecomCart from '@ecomplus/shopping-cart'
 var lessUnit = document.getElementById('lessUnit')
 var firstphrase = document.getElementById('lessSome')
 var lastphrase = document.getElementById('noMore')
-var lessQuantity = 1
+var lessQuantity = 8
 window.lessQuantity = lessQuantity
 lessUnit.innerHTML = lessQuantity
 ecomCart.on('change', ({ data }) => {
@@ -143,7 +143,7 @@ if (window.sessionStorage.getItem('buyTimer')) {
   const jsonTimer = window.sessionStorage.getItem('buyTimer')
   const json = JSON.parse(jsonTimer)
   if (json.cart === 0 && window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length) {
-    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), dateCart: new Date(), dateEndCart: new Date(new Date().getTime() + 600000),cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
+    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), dateCart: new Date(), dateEndCart: new Date(new Date().getTime() + 900000),cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
   }
 }
 if (window.localStorage.getItem('ecomUtm') && !window.sessionStorage.setItem('ecomUtm')) {
