@@ -58,9 +58,6 @@ setInterval(function () {
       if (name === 'confirmation') {
         if (window.sessionStorage.getItem('buyTimer')) {
           const jsonTimerCheckout = JSON.parse(window.sessionStorage.getItem('buyTimer'))
-          if (!jsonTimerCheckout.reload) {
-            window.location.reload()
-          } 
         }
         window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: 0, reload: 1 }))
         document.getElementById('containerCalc').style.display = 'none'
