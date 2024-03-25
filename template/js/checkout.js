@@ -8,6 +8,10 @@ var lessQuantity = 1
 window.lessQuantity = lessQuantity
 lessUnit.innerHTML = lessQuantity
 ecomCart.on('change', ({ data }) => {
+  if (data && data.items && data.items.length === 0) {
+    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: 0 }))
+    window.location = '/'
+  }
   var cartCalc = document.querySelectorAll('#cart')
   if (cartCalc.length) {
     document.getElementById('containerCalc').style.display = 'block'
@@ -52,6 +56,13 @@ setInterval(function () {
         emitCheckout1(name)
       }
       if (name === 'confirmation') {
+        if (window.sessionStorage.getItem('buyTimer')) {
+          const jsonTimerCheckout = JSON.parse(window.sessionStorage.getItem('buyTimer'))
+          if (!jsonTimerCheckout.reload) {
+            window.location.reload()
+          } 
+        }
+        window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: 0, reload: 1 }))
         document.getElementById('containerCalc').style.display = 'none'
       }
     }
