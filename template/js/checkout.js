@@ -10,7 +10,7 @@ lessUnit.innerHTML = lessQuantity
 ecomCart.on('change', ({ data }) => {
   if (data && data.items && data.items.length === 0) {
     window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), cart: 0 }))
-    window.location = '/'
+    //window.location = '/'
   }
   var cartCalc = document.querySelectorAll('#cart')
   if (cartCalc.length) {
