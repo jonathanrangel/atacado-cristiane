@@ -128,7 +128,7 @@ import {
       login (ecomPassport) {
         if (ecomPassport.checkAuthorization()) {
           this.localCustomer = ecomPassport.getCustomer()
-          window.location = '/'
+          //window.location = '/'
           this.$emit('login', ecomPassport)
         }
       },
@@ -145,7 +145,7 @@ import {
         axios.post(endpoint, this.localCustomer).then((e) => {
           this.isAccountCreated = true
           setTimeout(() => {
-            window.location = '/'
+            //window.location = '/'
           }, 2000)
         }).catch((e) => console.log(e))
       }
