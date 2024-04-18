@@ -336,3 +336,13 @@ display: none !important
     display: none !important;
   }
 } 
+
+.summary__amount__row {
+  .prices__value {
+    display: flex !important;
+    &:after {
+      content: "" !important;
+      font-weight: normal;
+    }
+  }
+}

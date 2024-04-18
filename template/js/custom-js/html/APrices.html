@@ -1,7 +1,6 @@
 <div
   class="prices"
   :class="{ 'prices--literal': isLiteral, 'prices--big': isBig }"
-  v-if="isLogged"
 >
   <span
     v-if="comparePrice"
@@ -42,7 +41,7 @@
 
     <div
       key="installments"
-      v-if="installmentsNumber > 1 && installmentValue"
+      v-if="installmentsNumber > 1 && installmentValue && price >= 3200"
       class="prices__installments"
     >
       <small v-if="isLiteral">
@@ -85,10 +84,3 @@
     </div>
   </transition-group>
 </div>
-<template v-else>
-    <div class="not-logged">
-        <strong>
-            <a href="/app/#/account/">Login para ver preço</a>
-        </strong>
-    </div>
-</template>
