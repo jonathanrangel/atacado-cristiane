@@ -265,6 +265,7 @@ import {
       }
       ecomPassport.on('login', () => {
         this.isWaitingPopup = false
+        window.location.href = '/'
         handleLogin()
       })
       handleLogin()
