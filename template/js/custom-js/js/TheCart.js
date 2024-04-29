@@ -82,6 +82,10 @@ import {
       isValidCart () {
         const utm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) 
         this.seller = utm && utm.campaign
+        const sessionUtm = JSON.parse(window.sessionStorage.getItem('ecomUtm') || '{}') 
+        sessionUtm.term = this.seller
+        sessionUtm.content = this.seller
+        window.sessionStorage.setItem('ecomUtm', JSON.stringify(sessionUtm))
         return this.ecomCart.data.items.find(({ quantity }) => quantity) && (this.seller === 'Bruna' || this.seller === 'Sandy')
       },
   
