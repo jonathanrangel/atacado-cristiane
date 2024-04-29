@@ -81,7 +81,7 @@ import {
   
       isValidCart () {
         const utm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) 
-        return this.ecomCart.data.items.find(({ quantity }) => quantity) && (this.seller === 'Sandy' || this.seller === 'Bruna' || utm.campaign === 'Bruna' || utm.campaign === 'Sandy') 
+        return this.ecomCart.data.items.find(({ quantity }) => quantity) && (this.seller === 'Sandy' || this.seller === 'Bruna') 
       },
   
       localDiscountCoupon: {
