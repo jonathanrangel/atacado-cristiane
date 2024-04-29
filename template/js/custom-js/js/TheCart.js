@@ -81,7 +81,7 @@ import {
   
       isValidCart () {
         const utm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) 
-        this.seller = utm && utm.campaign
+        this.seller = this.seller || utm && utm.campaign
         const sessionUtm = JSON.parse(window.sessionStorage.getItem('ecomUtm') || '{}') 
         sessionUtm.term = this.seller
         sessionUtm.content = this.seller
