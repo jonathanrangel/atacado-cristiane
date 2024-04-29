@@ -60,7 +60,7 @@ import {
         canApplyDiscount: false,
         isCouponApplied: false,
         books: [
-            { title: "Nenhum vendedor" },
+            { title: "--" },
             { title: "Sandy" },
             { title: "Bruna" }
             
@@ -80,7 +80,8 @@ import {
       },
   
       isValidCart () {
-        return this.ecomCart.data.items.find(({ quantity }) => quantity)
+        const utm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) 
+        return this.ecomCart.data.items.find(({ quantity }) => quantity) && (this.seller === 'Sandy' || this.seller === 'Bruna' || utm.campaign === 'Bruna' || utm.campaign === 'Sandy') 
       },
   
       localDiscountCoupon: {
@@ -105,7 +106,6 @@ import {
           if (source && source.toLowerCase() === 'atendimento' && campaign) {
             return campaign
           }
-          return 'Nenhum vendedor'
         },
         set (seller) {
           this.seller = seller

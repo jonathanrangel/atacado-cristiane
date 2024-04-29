@@ -140,7 +140,7 @@ if (window.sessionStorage.getItem('buyTimer')) {
   const jsonTimer = window.sessionStorage.getItem('buyTimer')
   const json = JSON.parse(jsonTimer)
   if (json.cart === 0 && window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length) {
-    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), dateCart: new Date(), dateEndCart: new Date(new Date().getTime() + 900000),cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
+    window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), dateCart: new Date(), dateEndCart: new Date(new Date().getTime() + 600000),cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
   }
 }
 if (window.localStorage.getItem('ecomUtm') && !window.sessionStorage.setItem('ecomUtm')) {

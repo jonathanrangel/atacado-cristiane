@@ -215,7 +215,7 @@ display: none !important
   display: none;
 }
 
-.shipping-calculator.cart__shipping, .summary__amount__row[data-freight="0.00"], .checkout__shipping-method, .checkout__shipping-method +.btn.btn-sm.btn-secondary {
+.shipping-calculator.cart__shipping, .summary__amount__row[data-freight="0.00"] {
   display: none !important;
 }
 
