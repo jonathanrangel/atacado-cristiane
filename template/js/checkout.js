@@ -4,7 +4,7 @@ import ecomCart from '@ecomplus/shopping-cart'
 var lessUnit = document.getElementById('lessUnit')
 var firstphrase = document.getElementById('lessSome')
 var lastphrase = document.getElementById('noMore')
-var lessQuantity = 1
+var lessQuantity = 3
 window.lessQuantity = lessQuantity
 lessUnit.innerHTML = lessQuantity
 ecomCart.on('change', ({ data }) => {
