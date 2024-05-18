@@ -65,7 +65,8 @@ import {
             { title: "Bruna" }
             
         ],
-        seller: null
+        seller: null,
+        quantityToBuy: 3
       }
     },
   
@@ -78,16 +79,20 @@ import {
       cart () {
         return this.ecomCart.data
       },
+
+      quantityCart () {
+        return this.cart && this.cart.items && this.cart.items.length && this.cart.items.reduce((acc, curr) => acc + curr.quantity, 0)
+      },
   
       isValidCart () {
         const utm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) 
         this.seller = this.seller || utm && utm.campaign
-        const sessionUtm = JSON.parse(window.sessionStorage.getItem('ecomUtm') || '{}') 
+        const sessionUtm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) || {}
         sessionUtm.term = this.seller
         sessionUtm.content = this.seller
         window.sessionStorage.setItem('ecomUtm', JSON.stringify(sessionUtm))
         const hasSeller = ['bruna', 'sandy'].some(name => this.seller && this.seller.toLowerCase() === name)
-        return this.ecomCart.data.items.find(({ quantity }) => quantity) && (hasSeller)
+        return this.quantityCart >= 3 && (hasSeller)
       },
   
       localDiscountCoupon: {
@@ -99,9 +104,19 @@ import {
         }
       },
 
-      quantityBuy () {
-        return window.countQuantity
-      }, 
+      canBuy () {
+        return this.quantityCart >= this.quantityToBuy
+      },
+
+      lessQuantity () {
+        const less = this.quantityToBuy - this.quantityCart
+        return less >= 0 ? less : 0 
+      },
+
+      percentBar () {
+        const ratio = this.quantityCart / this.quantityToBuy
+        return Math.round((ratio >= 1 ? 1 : ratio) * 100) + '%'
+      },
 
       utmSetter: {
         get () {

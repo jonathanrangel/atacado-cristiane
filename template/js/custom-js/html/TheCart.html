@@ -1,4 +1,19 @@
 <div class="cart">
+    <div id="containerCalc" class="container" style="padding: 1rem; margin-top: 1rem; border: 1px solid #ccc">
+      <span v-if="!canBuy" id="lessSome">Faltam <strong id="lessUnit"> {{ lessQuantity }} </strong> unidade(s) no carrinho<span id="showUnit"> para</span> finalizar a compra</span>
+      <span v-if="canBuy" id="noMore">Você já <b>completou</b> o <b>Pedido Mínimo</b>, continue e <b>finalize a compra</b>, ou <b>continue comprando</b>!</span>
+      <div class="progress" style="height: 2.5rem">
+            <div
+              class="progress-bar progress-bar-striped"
+              role="progressbar"
+              id="lastUnitsBar"
+              style="background-color: var(--primary-lighter)"
+              :style="`width: ${percentBar}`"
+            >
+            <strong style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem" id="percentBar"> {{ percentBar }} </strong>
+            </div>
+      </div>
+    </div>
     <transition-group enter-active-class="animated fadeInDown">
       <div
         class="row"

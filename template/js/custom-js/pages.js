@@ -15,3 +15,7 @@ if (!window.sessionStorage.getItem('buyTimer')) {
 if (window.sessionStorage.getItem('ecomUtm')) {
     window.localStorage.setItem('ecomUtm', window.sessionStorage.getItem('ecomUtm'))
 }
+
+if (window.localStorage.getItem('ecomUtm') && !window.sessionStorage.getItem('ecomUtm')) {
+    window.sessionStorage.setItem('ecomUtm', window.sessionStorage.getItem('ecomUtm'))
+  }

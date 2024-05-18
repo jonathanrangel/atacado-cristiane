@@ -1,7 +1,7 @@
 import '#template/js/checkout'
 import './custom-js/checkout'
 import ecomCart from '@ecomplus/shopping-cart'
-var lessUnit = document.getElementById('lessUnit')
+/* var lessUnit = document.getElementById('lessUnit')
 var firstphrase = document.getElementById('lessSome')
 var lastphrase = document.getElementById('noMore')
 var lessQuantity = 3
@@ -38,7 +38,7 @@ ecomCart.on('change', ({ data }) => {
   } else {
     document.getElementById('containerCalc').style.display = 'none'
   }
-})
+}) */
 const router1 = window.storefrontApp && window.storefrontApp.router
 setInterval(function () {
   if (router1) {
@@ -85,7 +85,7 @@ window.timerFunction = (endDate, newEnd, $div) => {
     const correctTimer = timeBetweenDates > 0 ? timeBetweenDates : 0
     flipAllCards(correctTimer, $div)
     previousTimeBetweenDates = correctTimer
-    if (correctTimer === 0) {
+    if (correctTimer === 0 && document.getElementById($div) && document.getElementById($div).length) {
       document.getElementById($div).style.display = 'none'
     }
   }, 250)
@@ -137,6 +137,6 @@ if (window.sessionStorage.getItem('buyTimer')) {
     window.sessionStorage.setItem('buyTimer', JSON.stringify({ date: new Date(), dateCart: new Date(), dateEndCart: new Date(new Date().getTime() + 600000),cart: window.ecomCart && window.ecomCart.data && window.ecomCart.data.items && window.ecomCart.data.items.length }))
   }
 }
-if (window.localStorage.getItem('ecomUtm') && !window.sessionStorage.setItem('ecomUtm')) {
+if (window.localStorage.getItem('ecomUtm') && !window.sessionStorage.getItem('ecomUtm')) {
   window.sessionStorage.setItem('ecomUtm', window.localStorage.getItem('ecomUtm'))
 }
