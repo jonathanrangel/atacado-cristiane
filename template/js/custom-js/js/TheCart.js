@@ -86,7 +86,8 @@ import {
         sessionUtm.term = this.seller
         sessionUtm.content = this.seller
         window.sessionStorage.setItem('ecomUtm', JSON.stringify(sessionUtm))
-        return this.ecomCart.data.items.find(({ quantity }) => quantity) && (this.seller === 'Bruna' || this.seller === 'Sandy')
+        const hasSeller = ['bruna', 'sandy'].some(name => this.seller && this.seller.toLowerCase() === name)
+        return this.ecomCart.data.items.find(({ quantity }) => quantity) && (hasSeller)
       },
   
       localDiscountCoupon: {
