@@ -14,6 +14,7 @@ module.exports = () => ({
       './html/ProductGallery.html': path.resolve(__dirname, 'template/js/custom-js/html/ProductGallery.html'),
       './html/ProductVariations.html': path.resolve(__dirname, 'template/js/custom-js/html/ProductVariations.html'),
       './js/ProductVariations.js': path.resolve(__dirname, 'template/js/custom-js/js/ProductVariations.js'),
+      './js/EcOrderInfo.js': path.resolve(__dirname, 'template/js/custom-js/js/EcOrderInfo.js'),
       './html/ProductCard.html': path.resolve(__dirname, 'template/js/custom-js/html/ProductCard.html'),
       './js/ProductCard.js': path.resolve(__dirname, 'template/js/custom-js/js/ProductCard.js'),
       './js/EcSummary.js': path.resolve(__dirname, 'template/js/custom-js/js/EcSummary.js'),
