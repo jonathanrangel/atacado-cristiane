@@ -145,7 +145,7 @@ import {
         const utm = JSON.parse(sessionStorage.getItem(storageKey)) || {}
         const seller = sell && sell.title
         this.utmSetter = seller
-        if (!seller.includes('Nenhum')) {
+        if (!seller.includes('--')) {
           this.seller = seller
           utm['content'] = seller
           utm['term'] = seller
@@ -155,9 +155,6 @@ import {
           if (!utm['source']) {
             utm['source'] = 'atendimento'
           }
-        } else {
-          delete utm['campaign']
-          delete utm['source']
         }
         console.log(utm)
         sessionStorage.setItem(storageKey, JSON.stringify(utm))
