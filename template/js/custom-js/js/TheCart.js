@@ -89,7 +89,7 @@ import {
           if (source && source.toLowerCase() === 'atendimento' && campaign) {
             return campaign
           }
-          return utm.term
+          return utm && utm.term
         },
         set (seller) {
           this.seller = seller
