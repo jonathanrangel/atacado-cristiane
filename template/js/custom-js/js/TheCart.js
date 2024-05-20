@@ -89,7 +89,7 @@ import {
           if (source && source.toLowerCase() === 'atendimento' && campaign) {
             return campaign
           }
-          return '--'
+          return utm.term
         },
         set (seller) {
           this.seller = seller
@@ -149,10 +149,17 @@ import {
           this.seller = seller
           utm['content'] = seller
           utm['term'] = seller
+          if (!utm['campaign']) {
+            utm['campaign'] = 'vendedora'
+          }
+          if (!utm['source']) {
+            utm['source'] = 'atendimento'
+          }
         } else {
           delete utm['campaign']
           delete utm['source']
         }
+        console.log(utm)
         sessionStorage.setItem(storageKey, JSON.stringify(utm))
       }, 
   
