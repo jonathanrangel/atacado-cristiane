@@ -80,13 +80,30 @@ import {
         return this.ecomCart.data
       },
 
+      utmSetter: {
+        get () {
+          const storageKey = 'ecomUtm'
+          const utm = JSON.parse(sessionStorage.getItem(storageKey)) || {}
+          const source = utm['source']
+          const campaign = utm['campaign']
+          if (source && source.toLowerCase() === 'atendimento' && campaign) {
+            return campaign
+          }
+          return '--'
+        },
+        set (seller) {
+          this.seller = seller
+        }
+        
+      },
+
       quantityCart () {
         return this.cart && this.cart.items && this.cart.items.length && this.cart.items.reduce((acc, curr) => acc + curr.quantity, 0)
       },
   
       isValidCart () {
         const utm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) 
-        this.seller = this.seller || utm && utm.campaign
+        this.seller = this.seller || this.utmSetter
         const sessionUtm = JSON.parse(window.sessionStorage.getItem('ecomUtm')) || {}
         sessionUtm.term = this.seller
         sessionUtm.content = this.seller
@@ -116,23 +133,6 @@ import {
       percentBar () {
         const ratio = this.quantityCart / this.quantityToBuy
         return Math.round((ratio >= 1 ? 1 : ratio) * 100) + '%'
-      },
-
-      utmSetter: {
-        get () {
-          const storageKey = 'ecomUtm'
-          const utm = JSON.parse(sessionStorage.getItem(storageKey)) || {}
-          const source = utm['source']
-          const campaign = utm['campaign']
-          if (source && source.toLowerCase() === 'atendimento' && campaign) {
-            return campaign
-          }
-          return '--'
-        },
-        set (seller) {
-          this.seller = seller
-        }
-        
       }
     },
   
@@ -147,8 +147,8 @@ import {
         this.utmSetter = seller
         if (!seller.includes('Nenhum')) {
           this.seller = seller
-          utm['campaign'] = seller
-          utm['source'] = 'atendimento'
+          utm['content'] = seller
+          utm['term'] = seller
         } else {
           delete utm['campaign']
           delete utm['source']
