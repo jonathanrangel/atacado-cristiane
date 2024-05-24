@@ -109,7 +109,7 @@ import {
         sessionUtm.content = this.seller
         window.sessionStorage.setItem('ecomUtm', JSON.stringify(sessionUtm))
         const hasSeller = ['bruna', 'sandy'].some(name => this.seller && this.seller.toLowerCase() === name)
-        return this.quantityCart >= 3 && (hasSeller)
+        return this.quantityCart >= this.quantityToBuy && (hasSeller)
       },
   
       localDiscountCoupon: {
