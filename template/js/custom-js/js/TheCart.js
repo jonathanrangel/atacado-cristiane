@@ -62,11 +62,11 @@ import {
         books: [
             { title: "--" },
             { title: "Sandy" },
-            { title: "Bruna" }
+            { title: "Vitoria" }
             
         ],
         seller: null,
-        quantityToBuy: 4
+        quantityToBuy: 1
       }
     },
   
